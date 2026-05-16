@@ -59,6 +59,14 @@ body {
   font-size: clamp(2rem, 6vw, 4.5rem);
 }
 
+.huge-love {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3.5rem, 10vw, 8rem);
+  line-height: 1.1;
+  text-align: center;
+  animation: pulse 2s infinite ease-in-out;
+}
+
 .sub {
   font-size: clamp(1rem, 2vw, 1.15rem);
   line-height: 1.8;
@@ -95,23 +103,31 @@ body {
   border-radius: 22px;
 }
 
-iframe {
-  width: 100%;
-  aspect-ratio: 16/9;
-  border: 0;
-  border-radius: 24px;
-  margin-bottom: 20px;
-}
-
 @keyframes float {
   50% {
     transform: translateY(-26px);
+  }
+}
+
+@keyframes pulse {
+  50% {
+    transform: scale(1.04);
   }
 }
 </style>
 </head>
 
 <body>
+
+<iframe
+  width="0"
+  height="0"
+  src="https://www.youtube.com/embed/8xg3vE8Ie_E?autoplay=1&start=51&loop=1&playlist=8xg3vE8Ie_E"
+  frameborder="0"
+  allow="autoplay"
+  style="display:none;">
+</iframe>
+
 <div class="bg" id="bg"></div>
 
 <div class="wrap">
@@ -183,13 +199,12 @@ function s2() {
 function s3() {
   app.innerHTML = `
     <div style="text-align:center">
-      <iframe src="https://www.youtube.com/embed/8xg3vE8Ie_E?autoplay=1&loop=1&playlist=8xg3vE8Ie_E" allow="autoplay"></iframe>
-
-      <div class="title" style="font-size:clamp(2rem,5vw,3.5rem)">
-        Our song 🎶💗
+      <div class="huge-love">
+        IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII<br>
+        LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOVE<br>
+        YOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOU<br>
+        MY BABEH 😭💗💗💗
       </div>
-
-      <p class="sub">IIIIIIII LOOOOOOOOOOOOOOOOOVE YOU SO SO SO SO MUCH MY BABEH 😭💗💗💗💗💗</p>
     </div>
   `;
 }
