@@ -152,7 +152,7 @@ body {
   </div>
 </div>
 
-<audio id="bgMusic" loop preload="auto">
+<audio id="bgMusic" loop preload="metadata">
   <source src="LoveStory.mp3" type="audio/mpeg">
 </audio>
 
@@ -168,15 +168,13 @@ body {
 function startMusic() {
   const music = document.getElementById("bgMusic");
 
-  music.play().then(() => {
-    setTimeout(() => {
-      music.currentTime = 51;
-    }, 500);
-  }).catch(err => {
-    alert("music failed 😭 check if LoveStory.mp3 uploaded correctly");
-    console.log(err);
+  music.addEventListener("loadedmetadata", function once() {
+    music.currentTime = 51;
+    music.play();
+    music.removeEventListener("loadedmetadata", once);
   });
 
+  music.load();
   document.getElementById("popup").style.display = "none";
 }
 
@@ -216,14 +214,12 @@ function s1() {
   app.innerHTML = `
     <div style="text-align:center">
       <div class="title" style="font-size:clamp(2rem,5vw,3.2rem)">Things I adore about you 👀</div>
-
       <div class="grid">
         <div class="card">🥹 Your smile makes me go crazYYYYYY</div>
         <div class="card">🍯 Your sweetness is way too much for me to handle</div>
         <div class="card">💗 The way you love me set the bar so high nobody could ever compare</div>
         <div class="card">🏡 I can already picture our little home, our trips, our dates, and our tiny chaotic kids 😭💗</div>
       </div>
-
       <button class="btn primary" onclick="s2()">Secret message 👀</button>
     </div>
   `;
