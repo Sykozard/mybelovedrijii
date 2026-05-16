@@ -9,133 +9,108 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 
 <style>
-* { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  font-family: Inter, sans-serif;
-  background: radial-gradient(circle at top, #ffd6ea, #fff0f6 40%, #ffe0e0 100%);
-  min-height: 100vh;
-  overflow-x: hidden;
-  overflow-y: auto;
-  color: #4a2230;
+*{box-sizing:border-box}
+body{
+margin:0;
+font-family:Inter,sans-serif;
+background:radial-gradient(circle at top,#ffd6ea,#fff0f6 40%,#ffe0e0 100%);
+min-height:100vh;
+overflow-x:hidden;
+color:#4a2230;
 }
-
-.popup {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.45);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 99999;
-  padding: 20px;
+.popup{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.45);
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:99999;
+padding:20px;
 }
-
-.popup-card {
-  background: white;
-  border-radius: 28px;
-  padding: 30px;
-  max-width: 420px;
-  text-align: center;
-  box-shadow: 0 20px 80px rgba(0,0,0,0.2);
+.popup-card{
+background:white;
+border-radius:28px;
+padding:30px;
+max-width:420px;
+text-align:center;
+box-shadow:0 20px 80px rgba(0,0,0,.2);
 }
-
-.popup-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
+.popup-title{
+font-family:'Playfair Display',serif;
+font-size:2rem;
 }
-
-.popup-text {
-  margin: 16px 0;
-  line-height: 1.7;
+.popup-text{
+margin:16px 0;
+line-height:1.7;
 }
-
-.btn {
-  border: none;
-  padding: 14px 22px;
-  border-radius: 18px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: 0.2s;
-  font-size: 1rem;
+.btn{
+border:none;
+padding:14px 22px;
+border-radius:18px;
+font-weight:700;
+cursor:pointer;
+font-size:1rem;
+background:linear-gradient(135deg,#ff73b3,#ff8d8d);
+color:white;
 }
-
-.btn:hover {
-  transform: scale(1.05);
+.bg{
+position:fixed;
+inset:0;
+pointer-events:none;
 }
-
-.primary {
-  background: linear-gradient(135deg, #ff73b3, #ff8d8d);
-  color: white;
+.heart{
+position:absolute;
+opacity:.18;
+animation:float 8s infinite ease-in-out;
 }
-
-.bg {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
+.glass{
+width:min(920px,92vw);
+background:rgba(255,255,255,.55);
+backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,.5);
+border-radius:32px;
+box-shadow:0 20px 80px rgba(190,80,120,.18);
+padding:28px;
+position:relative;
+z-index:2;
+margin:30px 0;
 }
-
-.heart {
-  position: absolute;
-  opacity: 0.18;
-  animation: float 8s infinite ease-in-out;
+.wrap{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:16px;
 }
-
-.glass {
-  width: min(920px, 92vw);
-  background: rgba(255,255,255,0.55);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255,255,255,0.5);
-  border-radius: 32px;
-  box-shadow: 0 20px 80px rgba(190,80,120,0.18);
-  padding: 28px;
-  position: relative;
-  z-index: 2;
-  margin: 30px 0;
+.title{
+font-family:'Playfair Display',serif;
+font-size:clamp(2rem,6vw,4.5rem);
 }
-
-.wrap {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
+.huge-love{
+font-family:'Playfair Display',serif;
+font-size:clamp(2.4rem,8vw,6rem);
+line-height:1.15;
+text-align:center;
+word-break:break-word;
 }
-
-.title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2rem, 6vw, 4.5rem);
+.sub{
+font-size:clamp(1rem,2vw,1.15rem);
+line-height:1.8;
 }
-
-.huge-love {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2.4rem, 8vw, 6rem);
-  line-height: 1.15;
-  text-align: center;
-  word-break: break-word;
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:14px;
+margin:24px 0;
 }
-
-.sub {
-  font-size: clamp(1rem, 2vw, 1.15rem);
-  line-height: 1.8;
+.card{
+background:rgba(255,255,255,.72);
+padding:18px;
+border-radius:22px;
 }
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 14px;
-  margin: 24px 0;
-}
-
-.card {
-  background: rgba(255,255,255,0.72);
-  padding: 18px;
-  border-radius: 22px;
-}
-
-@keyframes float {
-  50% { transform: translateY(-26px); }
+@keyframes float{
+50%{transform:translateY(-26px)}
 }
 </style>
 </head>
@@ -148,105 +123,101 @@ body {
     <div class="popup-text">
       for the full vibe and maximum emotional damage... press play first 🎶🥹💗
     </div>
-    <button class="btn primary" onclick="startMusic()">🎵 play our vibe</button>
+    <button class="btn" onclick="startMusic()">🎵 play our vibe</button>
   </div>
 </div>
 
-<audio id="bgMusic" loop preload="metadata">
-  <source src="LoveStory.mp3" type="audio/mpeg">
-</audio>
+<audio id="bgMusic" loop preload="auto" src="LoveStory.mp3"></audio>
 
 <div class="bg" id="bg"></div>
 
 <div class="wrap">
-  <div class="glass">
-    <div id="app"></div>
-  </div>
+<div class="glass">
+<div id="app"></div>
+</div>
 </div>
 
 <script>
 function startMusic() {
   const music = document.getElementById("bgMusic");
 
-  music.addEventListener("loadedmetadata", function once() {
-    music.currentTime = 51;
-    music.play();
-    music.removeEventListener("loadedmetadata", once);
+  music.currentTime = 51;
+
+  music.play().then(() => {
+    console.log("WE WON 😭🔥");
+  }).catch(() => {
+    music.load();
+    setTimeout(() => {
+      music.currentTime = 51;
+      music.play();
+    }, 1000);
   });
 
-  music.load();
   document.getElementById("popup").style.display = "none";
 }
 
-for (let i = 0; i < 22; i++) {
-  const h = document.createElement("div");
-  h.className = "heart";
-  h.textContent = "💗";
-  h.style.left = Math.random() * 100 + "%";
-  h.style.top = Math.random() * 100 + "%";
-  h.style.fontSize = (16 + Math.random() * 12) + "px";
-  document.getElementById("bg").appendChild(h);
+for(let i=0;i<22;i++){
+const h=document.createElement("div");
+h.className="heart";
+h.textContent="💗";
+h.style.left=Math.random()*100+"%";
+h.style.top=Math.random()*100+"%";
+h.style.fontSize=(16+Math.random()*12)+"px";
+document.getElementById("bg").appendChild(h);
 }
 
-const app = document.getElementById("app");
+const app=document.getElementById("app");
 
-const letter = `
-My beloved Rijwana, I don't think you truly understand how much you mean to me. Loving you feels like the easiest thing my heart has ever done. The way you care for me, love me, and make me feel so wanted has genuinely changed something in me. You set a standard so high that I honestly can't imagine anyone ever loving me the way you do.<br><br>
-
-Sometimes I catch myself daydreaming about the smallest cutest things with you 😭💗 us going on random trips together, late night food runs, matching outfits, movie nights where you steal all my attention, decorating our future little home together, and even our tiny chaotic kids running around while we pretend we know what we're doing 😭<br><br>
-
-I want all the soft moments with you, all the dumb funny moments, all the clingy moments, all the deep talks at 3am, all of it. Because life genuinely feels prettier with you in it. I care about you so much more than words can explain, and the thought of a future without you honestly feels so wrong to me.<br><br>
-
-You are my comfort, my happiness, my favorite person, my prettiest girl, my safe place, and one of the best things that has ever happened to me. 💗
+const letter=`
+My beloved Rijwana, I don't think you truly understand how much you mean to me. Loving you feels like the easiest thing my heart has ever done.<br><br>
+Sometimes I catch myself daydreaming about our future home, random trips, dates, matching outfits, and our tiny chaotic kids 😭💗<br><br>
+Life genuinely feels prettier with you in it. I love you more than words can explain 💗
 `;
 
-function s0() {
-  app.innerHTML = `
-    <div style="text-align:center">
-      <div class="title">For my Babeh, Riji 💗</div>
-      <p class="sub">Funny how life brought me back to you. Somehow, through everything, my heart still found its way back.</p>
-      <button class="btn primary" onclick="s1()">Open my heart 💌</button>
-    </div>
-  `;
+function s0(){
+app.innerHTML=`
+<div style="text-align:center">
+<div class="title">For my Babeh, Riji 💗</div>
+<p class="sub">Funny how life brought me back to you. Somehow, my heart still found its way back.</p>
+<button class="btn" onclick="s1()">Open my heart 💌</button>
+</div>`;
 }
 
-function s1() {
-  app.innerHTML = `
-    <div style="text-align:center">
-      <div class="title" style="font-size:clamp(2rem,5vw,3.2rem)">Things I adore about you 👀</div>
-      <div class="grid">
-        <div class="card">🥹 Your smile makes me go crazYYYYYY</div>
-        <div class="card">🍯 Your sweetness is way too much for me to handle</div>
-        <div class="card">💗 The way you love me set the bar so high nobody could ever compare</div>
-        <div class="card">🏡 I can already picture our little home, our trips, our dates, and our tiny chaotic kids 😭💗</div>
-      </div>
-      <button class="btn primary" onclick="s2()">Secret message 👀</button>
-    </div>
-  `;
+function s1(){
+app.innerHTML=`
+<div style="text-align:center">
+<div class="title" style="font-size:clamp(2rem,5vw,3.2rem)">Things I adore about you 👀</div>
+<div class="grid">
+<div class="card">🥹 Your smile makes me go crazYYYYYY</div>
+<div class="card">🍯 Your sweetness is too much for me to handle</div>
+<div class="card">💗 The way you love me set the bar impossibly high</div>
+<div class="card">🏡 Our future home, trips, dates, chaotic kids 😭💗</div>
+</div>
+<button class="btn" onclick="s2()">Secret message 👀</button>
+</div>`;
 }
 
-function s2() {
-  app.innerHTML = `
-    <div style="text-align:center">
-      <div class="title" style="font-size:clamp(2rem,5vw,3.2rem)">Emotional hour 🥹</div>
-      <p class="sub">${letter}</p>
-      <button class="btn primary" onclick="s3()">One last thing...</button>
-    </div>
-  `;
+function s2(){
+app.innerHTML=`
+<div style="text-align:center">
+<div class="title">Emotional hour 🥹</div>
+<p class="sub">${letter}</p>
+<button class="btn" onclick="s3()">One last thing...</button>
+</div>`;
 }
 
-function s3() {
-  app.innerHTML = `
-    <div class="huge-love">
-      IIIIIIIIIIIIIIIIIIII<br>
-      LOOOOOOOOOOOOOOOOOOVE<br>
-      YOOOOOOOOOOOOOOOOOUUUU<br>
-      MY BABEH 😭💗
-    </div>
-  `;
+function s3(){
+app.innerHTML=`
+<div class="huge-love">
+IIIIIIIIIIIIIIII<br>
+LOOOOOOOOOOVE<br>
+YOOOOOOOOOUUUU<br>
+MY BABEH 😭💗
+</div>`;
 }
 
 s0();
 </script>
+
 </body>
 </html>
