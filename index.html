@@ -152,7 +152,7 @@ body {
   </div>
 </div>
 
-<audio id="bgMusic" loop>
+<audio id="bgMusic" loop preload="auto">
   <source src="LoveStory.mp3" type="audio/mpeg">
 </audio>
 
@@ -167,8 +167,16 @@ body {
 <script>
 function startMusic() {
   const music = document.getElementById("bgMusic");
-  music.currentTime = 51;
-  music.play();
+
+  music.play().then(() => {
+    setTimeout(() => {
+      music.currentTime = 51;
+    }, 500);
+  }).catch(err => {
+    alert("music failed 😭 check if LoveStory.mp3 uploaded correctly");
+    console.log(err);
+  });
+
   document.getElementById("popup").style.display = "none";
 }
 
