@@ -134,6 +134,14 @@ body {
   border-radius: 22px;
 }
 
+#ytPlayer {
+  position: fixed;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
 @keyframes float {
   50% { transform: translateY(-26px); }
 }
@@ -152,6 +160,12 @@ body {
   </div>
 </div>
 
+<iframe
+  id="ytPlayer"
+  src=""
+  allow="autoplay">
+</iframe>
+
 <div class="bg" id="bg"></div>
 
 <div class="wrap">
@@ -160,13 +174,10 @@ body {
   </div>
 </div>
 
-<audio id="bgMusic" loop>
-  <source src="YOUR_AUDIO_LINK_HERE" type="audio/mpeg">
-</audio>
-
 <script>
 function startMusic() {
-  document.getElementById("bgMusic").play();
+  document.getElementById("ytPlayer").src =
+    "https://www.youtube.com/embed/8xg3vE8Ie_E?autoplay=1&start=51&loop=1&playlist=8xg3vE8Ie_E";
   document.getElementById("popup").style.display = "none";
 }
 
@@ -185,7 +196,7 @@ const app = document.getElementById("app");
 const letter = `
 My beloved Rijwana, I don't think you truly understand how much you mean to me. Loving you feels like the easiest thing my heart has ever done. The way you care for me, love me, and make me feel so wanted has genuinely changed something in me.<br><br>
 
-Sometimes I catch myself daydreaming about our little future 😭💗 random trips together, matching outfits, late night food runs, decorating our home together, and our tiny chaotic kids running around while we laugh at how unprepared we are 😭<br><br>
+Sometimes I catch myself daydreaming about our little future 😭💗 random trips together, matching outfits, late night food runs, decorating our home together, and our tiny chaotic kids running around while we laugh 😭<br><br>
 
 Life genuinely feels prettier with you in it. I care about you more than words can explain. 💗
 `;
@@ -228,9 +239,9 @@ function s2() {
 function s3() {
   app.innerHTML = `
     <div class="huge-love">
-      IIIIIIIIIIIIIIIIIIIIIII<br>
-      LOOOOOOOOOOOOOOOOVE<br>
-      YOOOOOOOOOOOOOUUUUU<br>
+      IIIIIIIIIIIIIIIIIII<br>
+      LOOOOOOOOOOOOOVE<br>
+      YOOOOOOOOOOOOOUUUU<br>
       MY BABEH 😭💗
     </div>
   `;
