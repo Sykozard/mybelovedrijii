@@ -21,6 +21,55 @@ body {
   color: #4a2230;
 }
 
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  padding: 20px;
+}
+
+.popup-card {
+  background: white;
+  border-radius: 28px;
+  padding: 30px;
+  max-width: 420px;
+  text-align: center;
+  box-shadow: 0 20px 80px rgba(0,0,0,0.2);
+}
+
+.popup-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+}
+
+.popup-text {
+  margin: 16px 0;
+  line-height: 1.7;
+}
+
+.btn {
+  border: none;
+  padding: 14px 22px;
+  border-radius: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+  font-size: 1rem;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.primary {
+  background: linear-gradient(135deg, #ff73b3, #ff8d8d);
+  color: white;
+}
+
 .bg {
   position: fixed;
   inset: 0;
@@ -61,33 +110,15 @@ body {
 
 .huge-love {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(3.5rem, 10vw, 8rem);
-  line-height: 1.1;
+  font-size: clamp(2rem, 7vw, 5rem);
+  line-height: 1.15;
   text-align: center;
-  animation: pulse 2s infinite ease-in-out;
+  word-break: break-word;
 }
 
 .sub {
   font-size: clamp(1rem, 2vw, 1.15rem);
   line-height: 1.8;
-}
-
-.btn {
-  border: none;
-  padding: 14px 22px;
-  border-radius: 18px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.btn:hover {
-  transform: scale(1.05);
-}
-
-.primary {
-  background: linear-gradient(135deg, #ff73b3, #ff8d8d);
-  color: white;
 }
 
 .grid {
@@ -104,29 +135,22 @@ body {
 }
 
 @keyframes float {
-  50% {
-    transform: translateY(-26px);
-  }
-}
-
-@keyframes pulse {
-  50% {
-    transform: scale(1.04);
-  }
+  50% { transform: translateY(-26px); }
 }
 </style>
 </head>
 
 <body>
 
-<iframe
-  width="0"
-  height="0"
-  src="https://www.youtube.com/embed/8xg3vE8Ie_E?autoplay=1&start=51&loop=1&playlist=8xg3vE8Ie_E"
-  frameborder="0"
-  allow="autoplay"
-  style="display:none;">
-</iframe>
+<div class="popup" id="popup">
+  <div class="popup-card">
+    <div class="popup-title">waittt 😭💗</div>
+    <div class="popup-text">
+      for the full vibe and maximum emotional damage... press play first 🎶🥹💗
+    </div>
+    <button class="btn primary" onclick="startMusic()">🎵 play our vibe</button>
+  </div>
+</div>
 
 <div class="bg" id="bg"></div>
 
@@ -136,7 +160,16 @@ body {
   </div>
 </div>
 
+<audio id="bgMusic" loop>
+  <source src="YOUR_AUDIO_LINK_HERE" type="audio/mpeg">
+</audio>
+
 <script>
+function startMusic() {
+  document.getElementById("bgMusic").play();
+  document.getElementById("popup").style.display = "none";
+}
+
 for (let i = 0; i < 22; i++) {
   const h = document.createElement("div");
   h.className = "heart";
@@ -150,20 +183,18 @@ for (let i = 0; i < 22; i++) {
 const app = document.getElementById("app");
 
 const letter = `
-My beloved Rijwana, I don't think you truly understand how much you mean to me. Loving you feels like the easiest thing my heart has ever done. The way you care for me, love me, and make me feel so wanted has genuinely changed something in me. You set a standard so high that I honestly can't imagine anyone ever loving me the way you do.<br><br>
+My beloved Rijwana, I don't think you truly understand how much you mean to me. Loving you feels like the easiest thing my heart has ever done. The way you care for me, love me, and make me feel so wanted has genuinely changed something in me.<br><br>
 
-Sometimes I catch myself daydreaming about the smallest cutest things with you 😭💗 us going on random trips together, late night food runs, matching outfits, movie nights where you steal all my attention, decorating our future little home together, and even our tiny chaotic kids running around while we pretend we know what we're doing 😭<br><br>
+Sometimes I catch myself daydreaming about our little future 😭💗 random trips together, matching outfits, late night food runs, decorating our home together, and our tiny chaotic kids running around while we laugh at how unprepared we are 😭<br><br>
 
-I want all the soft moments with you, all the dumb funny moments, all the clingy moments, all the deep talks at 3am, all of it. Because life genuinely feels prettier with you in it. I care about you so much more than words can explain, and the thought of a future without you honestly feels so wrong to me.<br><br>
-
-You are my comfort, my happiness, my favorite person, my prettiest girl, my safe place, and one of the best things that has ever happened to me. 💗
+Life genuinely feels prettier with you in it. I care about you more than words can explain. 💗
 `;
 
 function s0() {
   app.innerHTML = `
     <div style="text-align:center">
       <div class="title">For my Babeh, Riji 💗</div>
-      <p class="sub">Funny how life brought me back to you. Somehow, through everything, my heart still found its way back.</p>
+      <p class="sub">Funny how life brought me back to you. Somehow, my heart still found its way back.</p>
       <button class="btn primary" onclick="s1()">Open my heart 💌</button>
     </div>
   `;
@@ -173,14 +204,12 @@ function s1() {
   app.innerHTML = `
     <div style="text-align:center">
       <div class="title" style="font-size:clamp(2rem,5vw,3.2rem)">Things I adore about you 👀</div>
-
       <div class="grid">
         <div class="card">🥹 Your smile makes me go crazYYYYYY</div>
         <div class="card">🍯 Your sweetness is way too much for me to handle</div>
-        <div class="card">💗 The way you love me set the bar so high nobody could ever compare</div>
-        <div class="card">🏡 I can already picture our little home, our trips, our dates, and our tiny chaotic kids 😭💗</div>
+        <div class="card">💗 The way you love me set the bar so high nobody compares</div>
+        <div class="card">🏡 Our future home, trips, dates, tiny chaotic kids 😭💗</div>
       </div>
-
       <button class="btn primary" onclick="s2()">Secret message 👀</button>
     </div>
   `;
@@ -189,7 +218,7 @@ function s1() {
 function s2() {
   app.innerHTML = `
     <div style="text-align:center">
-      <div class="title" style="font-size:clamp(2rem,5vw,3.2rem)">Emotional hour 🥹</div>
+      <div class="title">Emotional hour 🥹</div>
       <p class="sub">${letter}</p>
       <button class="btn primary" onclick="s3()">One last thing...</button>
     </div>
@@ -198,13 +227,11 @@ function s2() {
 
 function s3() {
   app.innerHTML = `
-    <div style="text-align:center">
-      <div class="huge-love">
-        IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII<br>
-        LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOVE<br>
-        YOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOU<br>
-        MY BABEH 😭💗💗💗
-      </div>
+    <div class="huge-love">
+      IIIIIIIIIIIIIIIIIIIIIII<br>
+      LOOOOOOOOOOOOOOOOVE<br>
+      YOOOOOOOOOOOOOUUUUU<br>
+      MY BABEH 😭💗
     </div>
   `;
 }
